@@ -9,7 +9,7 @@ def get_args():
     '''Get arguements from user'''
     parser = argparse.ArgumentParser(description='STAIRs Generic File Renamer')
     parser.add_argument(
-        '-s', '--size', metavar='size', default=1200, help='Set the size of the new image measured in pixels on the logest edge. The process with preserve aspect (default: 1200 pixels)'
+        '-s', '--size', metavar='size', default=2500, help='Set the size of the new image measured in pixels on the logest edge. The process with preserve aspect (default: 1200 pixels)'
     )
     parser.add_argument(
         '-d', '--directory', metavar='directory', default=os.path.dirname(__file__), help='The folder that contains the photos to be resized (default: looks for images in the current folder of the script)'
