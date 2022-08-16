@@ -9,9 +9,11 @@ The tool makes use of Python and the Pillow library to do all of the processing.
 On a common workload of 594 photos the tool has realized the following times. As you'll notice individual CPU cores are pretty even, but once they are running in parallel they can do a tremendous amount of work. 
 
 **Intel i5 1167G - 594 photos in 180 seconds in sequential mode**
+
 **Intel i5 1167G - 594 photos in 49 seconds in parallel mode**
 
 **AMD Threadripper - 594 photos in 160 seconds in sequential mode**
+
 **AMD Threadripper - 594 photos in 11 seconds in parallel mode**
 
 Though the use of the script we can avoid having to load and draw the image to the screen, so we can devote all of the CPU to the work at hand. I have also enabled it to add the red chip to images, this additional step adds about 5 seconds over the course of the entire run. 
