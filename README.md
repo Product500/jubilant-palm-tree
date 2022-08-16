@@ -10,7 +10,7 @@ On a common workload of 594 photos the tool has realized the following times. As
 
 >**Intel i5 1167G - 594 photos in 180 seconds in sequential mode**
 >**Intel i5 1167G - 594 photos in 49 seconds in parallel mode**
->
+
 >**AMD Threadripper - 594 photos in 160 seconds in sequential mode**
 >**AMD Threadripper - 594 photos in 11 seconds in parallel mode**
 
