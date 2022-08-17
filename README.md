@@ -41,15 +41,21 @@ To run the script with its default parameters, go to the containing folder and r
 The script will resize all of the images that are in the directory with it, that would be no flag, and resized to 2500px on the end.
 
 To run the script while overriding the size, run the following command.
+
 > .\PhotoResizerMP.py -s 1200
+
 This will locate the photos in the directory with the script and resize them to 1200px on the long end.
+
 
 To run the script and target file in a different directory run the following command.
 > .\PhotoResizerMP.py -d C:\SomeOtherDir\
+
 This will process images in a different directory than the script. 
 
 To run the script and have it apply the flag to each image, runn the following command.
+
 > .\PhotoResizerMP.py -f True
+
 This will apply a red 'flag' to the top left hand corner of the image.
 
 ### Further Thoughts:
