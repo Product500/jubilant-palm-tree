@@ -36,6 +36,22 @@ Enjoy!
 To use the script is straightforward. Place the PhotoResizerMP.py file into the target folder with images and then double click it. After double clicking it, the script will detonate and get to work on the files in the current folder. It will spawn a black window that will sit for a few moments, and eventually it will print out a timer result for the job, after that you are free to close the window.  
 **NOTE: THE SCRIPT WILL OVERWRITE THE ORIGINALS**
 
+To run the script with its default parameters, go to the containing folder and run the following command.
+> .\PhotoResizerMP.py
+The script will resize all of the images that are in the directory with it, that would be no flag, and resized to 2500px on the end.
+
+To run the script while overriding the size, run the following command.
+> .\PhotoResizerMP.py -s 1200
+This will locate the photos in the directory with the script and resize them to 1200px on the long end.
+
+To run the script and target file in a different directory run the following command.
+> .\PhotoResizerMP.py -d C:\SomeOtherDir\
+This will process images in a different directory than the script. 
+
+To run the script and have it apply the flag to each image, runn the following command.
+> .\PhotoResizerMP.py -f True
+This will apply a red 'flag' to the top left hand corner of the image.
+
 ### Further Thoughts:
 
 On line 54 of the script is a value called max_workers, it is currently set to 10 and can be adjusted to a higher value to better saturate the CPU. The results from my i5 were done with 10 workers, the Threadripper results are with 20 workers. Feel free to experiment with this value, but beware that arbitrarily raising it will often have diminishing returns. The Threadripper benchmark completely satured all of the cores with just 20 workers. 
