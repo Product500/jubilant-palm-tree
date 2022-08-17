@@ -36,27 +36,30 @@ Enjoy!
 To use the script is straightforward. Place the PhotoResizerMP.py file into the target folder with images and then double click it. After double clicking it, the script will detonate and get to work on the files in the current folder. It will spawn a black window that will sit for a few moments, and eventually it will print out a timer result for the job, after that you are free to close the window.  
 **NOTE: THE SCRIPT WILL OVERWRITE THE ORIGINALS**
 
-To run the script with its default parameters, go to the containing folder and run the following command.
-> .\PhotoResizerMP.py
-The script will resize all of the images that are in the directory with it, that would be no flag, and resized to 2500px on the end.
+To run the script with its default parameters, go to the containing folder and run the following command.  
 
-To run the script while overriding the size, run the following command.
+> .\PhotoResizerMP.py  
 
-> .\PhotoResizerMP.py -s 1200
+The script will resize all of the images that are in the directory with it, that would be no flag, and resized to 2500px on the end.  
 
-This will locate the photos in the directory with the script and resize them to 1200px on the long end.
+To run the script while overriding the size, run the following command.  
+
+> .\PhotoResizerMP.py -s 1200  
+
+This will locate the photos in the directory with the script and resize them to 1200px on the long end.  
 
 
-To run the script and target file in a different directory run the following command.
-> .\PhotoResizerMP.py -d C:\SomeOtherDir\
+To run the script and target file in a different directory run the following command.  
 
-This will process images in a different directory than the script. 
+> .\PhotoResizerMP.py -d C:\SomeOtherDir\  
 
-To run the script and have it apply the flag to each image, runn the following command.
+This will process images in a different directory than the script.  
 
-> .\PhotoResizerMP.py -f True
+To run the script and have it apply the flag to each image, runn the following command.  
 
-This will apply a red 'flag' to the top left hand corner of the image.
+> .\PhotoResizerMP.py -f True  
+
+This will apply a red 'flag' to the top left hand corner of the image.  
 
 ### Further Thoughts:
 
