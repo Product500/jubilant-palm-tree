@@ -37,7 +37,7 @@ def mpResizePhotosChip(image, imageScale=2500):
 
         with Image.open(str(os.path.dirname(__file__) + '\\' + image)) as im:
             draw = ImageDraw.Draw(im)
-            draw.rectangle([(0, 0), (300, 200)], fill='red')
+            draw.rectangle([(0, 0), (900, 600)], fill='red')
             im.thumbnail(size)
             im.save(str(os.path.dirname(__file__) + '\\' + image))
 
