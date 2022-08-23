@@ -1,5 +1,3 @@
-from audioop import reverse
-from heapq import nsmallest
 import os
 import argparse
 import timeit
