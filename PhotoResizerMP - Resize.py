@@ -8,7 +8,7 @@ from itertools import repeat
 
 def get_args():
     '''Get arguements from user'''
-    parser = argparse.ArgumentParser(description='STAIRs Generic File Renamer')
+    parser = argparse.ArgumentParser(description='STAIR Generic File Renamer')
     parser.add_argument(
         '-s', '--size', metavar='size', default=2500, help='Set the size of the new image measured in pixels on the logest edge. The process with preserve aspect (default: 1200 pixels)'
     )
@@ -29,46 +29,56 @@ def read_dirinfo(directory):
     return os.listdir(directory)
 
 
-def mpResizePhotosChip(image, imageScale=2500):
-    '''Resize user supplied photos with a colored flag in the top left hand corner.'''
-
-    size = imageScale, imageScale
-
-    if image[-3:] == 'jpg':
-
-        with Image.open(str(os.path.dirname(__file__) + '\\' + image)) as im:
-            draw = ImageDraw.Draw(im)
-            draw.rectangle([(0, 0), (im.height // 10, im.height // 10)], fill='red')
-            im.thumbnail(size)
-            im.save(str(os.path.dirname(__file__) + '\\' + image))
+def countWork(imageFiles):
+    count = 0
+    for image in imageFiles:
+        if image[-3:] == 'jpg':
+            count = count + 1
+    return count
 
 
-def mpResizePhotos(image, imageScale=2500):
+def addPhotoFlag(image, flagColor):
+    '''add a colored flag to the top right of the image'''
+    draw = ImageDraw.Draw(image)
+    draw.rectangle(
+        [(0, 0), (image.height // 10, image.height // 10)], fill=flagColor)
+
+
+def mpResizePhotos(image, workingDir, flag, color, imageScale=2500):
     '''Resize user supplied photos and omit the flag.'''
+    workingDir = workingDir
+    osSlash = os.sep
     size = imageScale, imageScale
     if image[-3:] == 'jpg':
-
-        with Image.open(str(os.path.dirname(__file__) + '\\' + image)) as im:
+        with Image.open(workingDir + osSlash + image) as im:
             im.thumbnail(size)
-            im.save(str(os.path.dirname(__file__) + '\\' + image))
+            if (flag):
+                addPhotoFlag(im, color)
+            im.save(workingDir + osSlash + image)
 
 
 def main():
 
     args = get_args()
     imageFiles = read_dirinfo(args.directory)
-    workType = mpResizePhotos
+    workerCount = os.cpu_count() * 2
 
-    # Use a bool to determine what type of work we are doing. This check is made only once at the start of execution.
-    #if (args.flag):
-    #    workType = mpResizePhotosChip
+    
+
+    print(f'''
+    The current working folder is {args.directory}.
+    The number of files to be processed is {countWork(imageFiles)}.
+    The number of cores available is {os.cpu_count()} and {workerCount} workers will fan out. 
+    The flag value is set to {args.flag} with the color {args.color}.
+    The desired image size is {args.size}px.
+    ''')
 
     start = timeit.default_timer()
-    print(
-        f'The state of workType is: {args.flag} and the state of color is: {args.color} as {type(args.color)}')
-    with ProcessPoolExecutor(max_workers=10) as executor:
+
+    with ProcessPoolExecutor(max_workers=workerCount) as executor:
         futures = executor.map(
-            workType, imageFiles
+            mpResizePhotos, imageFiles, repeat(args.directory), repeat(
+                args.flag), repeat(args.color), repeat(args.size)
         )
 
     end = timeit.default_timer()
