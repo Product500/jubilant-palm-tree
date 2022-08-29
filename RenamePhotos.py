@@ -1,10 +1,7 @@
 import os
 import argparse
-import timeit
 import glob
 import csv
-from tkinter import NS
-from types import NoneType
 from openpyxl import load_workbook
 
 
